@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Rita ♡</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #57263a;
+    background: linear-gradient(145deg, #fff4f8, #ffd0e0);
+}
+
+.screen {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.screen.active {
+    display: flex;
+    animation: fadeIn .6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(.97); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.container {
+    width: min(94%, 520px);
+    text-align: center;
+}
+
+.small {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 11px;
+    color: #9c7180;
+    margin-bottom: 12px;
+}
+
+h1, h2 {
+    font-family: Georgia, serif;
+}
+
+button {
+    border: none;
+    background: #cc3970;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 20px;
+    box-shadow: 0 8px 20px rgba(150,30,80,.2);
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(.96);
+}
+
+/* INTRO */
+
+.intro-name {
+    font-family: Georgia, serif;
+    font-size: clamp(70px, 20vw, 110px);
+    color: #c42f67;
+    margin: 15px 0;
+}
+
+.intro-age {
+    font-size: 22px;
+}
+
+/* BALLOONS */
+
+.balloon-title {
+    font-family: Georgia, serif;
+    color: #bd3264;
+    font-size: clamp(42px, 12vw, 65px);
+    margin-bottom: 10px;
+}
+
+.balloon-sub {
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: .7;
+}
+
+.balloon-area {
+    position: relative;
+    width: 100%;
+    height: 330px;
+    margin-top: 15px;
+}
+
+.balloon {
+    position: absolute;
+    width: 68px;
+    height: 86px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform .15s;
+    box-shadow: inset -8px -10px 15px rgba(0,0,0,.08),
+                0 8px 15px rgba(70,30,50,.12);
+}
+
+.balloon:hover {
+    transform: scale(1.06);
+}
+
+.balloon::before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 27px;
+    background: rgba(255,255,255,.45);
+    border-radius: 50%;
+    top: 12px;
+    left: 12px;
+    transform: rotate(25deg);
+}
+
+.balloon::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 10px solid currentColor;
+}
+
+.string {
+    position: absolute;
+    top: 84px;
+    left: 50%;
+    height: 105px;
+    width: 1px;
+    background: #92727e;
+}
+
+.b1 {
+    left: 5%;
+    top: 30px;
+    background: #ff82aa;
+    color: #ff82aa;
+}
+
+.b2 {
+    left: 38%;
+    top: 5px;
+    background: #a495ff;
+    color: #a495ff;
+}
+
+.b3 {
+    right: 5%;
+    top: 35px;
+    background: #ffd15b;
+    color: #ffd15b;
+}
+
+.b4 {
+    left: 22%;
+    top: 180px;
+    background: #6fd2c5;
+    color: #6fd2c5;
+}
+
+.b5 {
+    right: 21%;
+    top: 190px;
+    background: #ff9976;
+    color: #ff9976;
+}
+
+.balloon.popped {
+    animation: pop .4s forwards;
+    pointer-events: none;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    40% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(.05);
+        opacity: 0;
+    }
+}
+
+.balloon-message {
+    min-height: 48px;
+    font-family: Georgia, serif;
+    font-size: 19px;
+    color: #bd3264;
+    padding: 5px 10px;
+    opacity: 0;
+    transition: .4s;
+}
+
+.balloon-message.show {
+    opacity: 1;
+}
+
+.counter {
+    display: inline-block;
+    background: white;
+    padding: 7px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* CAKE */
+
+.cake-title {
+    font-family: Georgia, serif;
+    color: #bd3264;
+    font-size: clamp(42px, 12vw, 65px);
+}
+
+.cake-text {
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: .7;
+    margin-top: 8px;
+}
+
+.cake {
+    position: relative;
+    width: 280px;
+    height: 260px;
+    margin: 0 auto;
+}
+
+.plate {
+    position: absolute;
+    width: 270px;
+    height: 25px;
+    background: #e6a8bb;
+    border-radius: 50%;
+    bottom: 25px;
+    left: 5px;
+}
+
+.cake-body {
+    position: absolute;
+    width: 215px;
+    height: 105px;
+    background: linear-gradient(#f5b2c8,#e989ad);
+    border-radius: 15px 15px 25px 25px;
+    bottom: 45px;
+    left: 32px;
+}
+
+.frosting {
+    position: absolute;
+    width: 215px;
+    height: 42px;
+    background: #fffafd;
+    border-radius: 50%;
+    top: -16px;
+}
+
+.number23 {
+    position: absolute;
+    top: 38px;
+    left: 0;
+    width: 100%;
+    font-family: Georgia, serif;
+    font-size: 35px;
+    font-weight: bold;
+    color: #b52c5e;
+}
+
+.candle {
+    position: absolute;
+    width: 15px;
+    height: 65px;
+    bottom: 145px;
+    background: repeating-linear-gradient(
+        135deg,
+        white 0 8px,
+        #f18bad 8px 16px
+    );
+    border-radius: 5px;
+    z-index: 3;
+}
+
+.c1 { left: 90px; }
+.c2 { left: 132px; }
+.c3 { left: 174px; }
+
+.flame {
+    position: absolute;
+    width: 20px;
+    height: 29px;
+    background: linear-gradient(#fff46a,#ff9223);
+    border-radius: 60% 40% 60% 40%;
+    bottom: 207px;
+    z-index: 4;
+    animation: flame .5s infinite alternate;
+}
+
+.f1 { left: 87px; }
+.f2 { left: 129px; }
+.f3 { left: 171px; }
+
+@keyframes flame {
+    from { transform: rotate(5deg) scale(1); }
+    to { transform: rotate(-6deg) scale(.88); }
+}
+
+.flame.off {
+    opacity: 0;
+    transform: scale(0);
+    animation: none;
+}
+
+.wind {
+    width: 90%;
+    accent-color: #cc3970;
+}
+
+.wind-label {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.wind-percent {
+    font-size: 11px;
+    opacity: .5;
+}
+
+/* CANDLE MESSAGE */
+
+#candleMessage {
+    background: rgba(255,226,237,.98);
+    z-index: 10;
+}
+
+.candle-message-inner {
+    max-width: 430px;
+}
+
+.candle-message-inner h2 {
+    color: #bd3264;
+    font-size: clamp(45px, 13vw, 70px);
+    margin: 12px 0 20px;
+}
+
+.candle-message-inner p {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* GIFT */
+
+.gift-title {
+    font-family: Georgia, serif;
+    color: #bd3264;
+    font-size: clamp(43px, 12vw, 65px);
+    margin: 5px 0;
+}
+
+.gift-sub {
+    font-size: 13px;
+    opacity: .7;
+}
+
+/* SUNFLOWER */
+
+.sunflower {
+    position: relative;
+    width: 125px;
+    height: 135px;
+    margin: 5px auto 0;
+    animation: flowerFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes flowerFloat {
+    50% {
+        transform: translateY(-5px) rotate(2deg);
+    }
+}
+
+.petal {
+    position: absolute;
+    width: 42px;
+    height: 62px;
+    background: #ffc928;
+    border-radius: 50%;
+    left: 42px;
+    top: 22px;
+    transform-origin: 21px 40px;
+}
+
+.petal:nth-child(1) { transform: rotate(0deg) translateY(-25px); }
+.petal:nth-child(2) { transform: rotate(45deg) translateY(-25px); }
+.petal:nth-child(3) { transform: rotate(90deg) translateY(-25px); }
+.petal:nth-child(4) { transform: rotate(135deg) translateY(-25px); }
+.petal:nth-child(5) { transform: rotate(180deg) translateY(-25px); }
+.petal:nth-child(6) { transform: rotate(225deg) translateY(-25px); }
+.petal:nth-child(7) { transform: rotate(270deg) translateY(-25px); }
+.petal:nth-child(8) { transform: rotate(315deg) translateY(-25px); }
+
+.flower-center {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    background: #70401f;
+    border-radius: 50%;
+    left: 37px;
+    top: 37px;
+    z-index: 2;
+}
+
+.flower-stem {
+    position: absolute;
+    width: 7px;
+    height: 72px;
+    background: #598b4b;
+    left: 62px;
+    top: 80px;
+}
+
+/* KITKAT */
+
+.kitkat {
+    position: relative;
+    width: 215px;
+    height: 78px;
+    margin: -3px auto 5px;
+    animation: chocolateFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes chocolateFloat {
+    50% {
+        transform: translateY(-4px) rotate(1deg);
+    }
+}
+
+.wrapper {
+    position: absolute;
+    width: 190px;
+    height: 68px;
+    left: 12px;
+    top: 4px;
+    background: linear-gradient(145deg,#ed3039,#b70e1c);
+    border-radius: 9px;
+    transform: rotate(-3deg);
+    box-shadow: 0 10px 18px rgba(70,0,10,.2);
+}
+
+.wrapper-border {
+    position: absolute;
+    inset: 5px;
+    border: 2px solid white;
+    border-radius: 6px;
+    opacity: .85;
+}
+
+.kitkat-logo {
+    position: absolute;
+    width: 132px;
+    height: 31px;
+    left: 29px;
+    top: 17px;
+    background: white;
+    border-radius: 50%;
+    color: #cf1d2a;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-1deg);
+}
+
+.wafer {
+    position: absolute;
+    width: 130px;
+    height: 10px;
+    bottom: -7px;
+    left: 31px;
+    background: repeating-linear-gradient(
+        90deg,
+        #d79a64 0 8px,
+        #b97649 8px 11px
+    );
+    border-radius: 4px;
+}
+
+/* JOKE */
+
+.joke {
+    background: white;
+    width: min(96%, 500px);
+    margin: 0 auto;
+    padding: 12px 15px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(80,30,50,.08);
+}
+
+.joke p {
+    font-size: 12px;
+    line-height: 1.45;
+    margin-bottom: 5px;
+}
+
+.joke p:last-child {
+    margin-bottom: 0;
+}
+
+.joke strong {
+    color: #c83268;
+}
+
+/* LETTER */
+
+.letter {
+    width: min(94%, 540px);
+    max-height: 88vh;
+    overflow-y: auto;
+    background: #fffaf3;
+    padding: 28px 24px;
+    box-shadow: 0 20px 50px rgba(70,30,40,.15);
+    transform: rotate(-.4deg);
+}
+
+.letter h1 {
+    color: #bd3264;
+    font-size: 45px;
+    margin-bottom: 12px;
+}
+
+.letter p {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 13px;
+}
+
+.signature {
+    color: #c83268;
+    font-weight: bold;
+}
+
+/* FINAL */
+
+.final-number {
+    font-family: Georgia, serif;
+    font-size: 120px;
+    line-height: .8;
+    color: #d43b70;
+    text-shadow: 7px 7px #ffd0df;
+}
+
+.final h1 {
+    color: #bd3264;
+    font-family: Georgia, serif;
+    font-size: 43px;
+    margin-top: 25px;
+}
+
+.final p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-top: 12px;
+}
+
+.final-last {
+    color: #c83268;
+    font-weight: bold;
+}
+
+/* MOBILE */
+
+@media (max-height: 700px) {
+
+    .screen {
+        padding: 10px;
+    }
+
+    .balloon-area {
+        height: 275px;
+    }
+
+    .b4 {
+        top: 150px;
+    }
+
+    .b5 {
+        top: 165px;
+    }
+
+    .sunflower {
+        transform: scale(.83);
+        margin-top: -5px;
+        margin-bottom: -12px;
+    }
+
+    .kitkat {
+        transform: scale(.9);
+        margin-top: -8px;
+        margin-bottom: -3px;
+    }
+
+    .joke {
+        padding: 8px 12px;
+    }
+
+    .joke p {
+        font-size: 11px;
+        margin-bottom: 3px;
+    }
+
+    .gift-title {
+        font-size: 48px;
+    }
+
+    .gift-sub {
+        font-size: 12px;
+    }
+
+    .letter {
+        max-height: 84vh;
+    }
+
+    .letter p {
+        font-size: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section id="intro" class="screen active">
+
+    <div class="container">
+
+        <div class="small">
+            a tiny birthday surprise
+        </div>
+
+        <div class="intro-name">
+            Rita
+        </div>
+
+        <div>
+            is officially
+        </div>
+
+        <div class="intro-age">
+            23 today ♡
+        </div>
+
+        <button onclick="go('balloons')">
+            Open your surprise
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BALLOONS
+========================= -->
+
+<section id="balloons" class="screen">
+
+    <div class="container">
+
+        <div class="small">
+            first mission
+        </div>
+
+        <h1 class="balloon-title">
+            Pop the balloons
+        </h1>
+
+        <p class="balloon-sub">
+            Tap every balloon. Each one has something
+            I want you to know.
+        </p>
+
+        <div class="balloon-area">
+
+            <div class="balloon b1"
+                 onclick="popBalloon(this,0)">
+                <span class="string"></span>
+            </div>
+
+            <div class="balloon b2"
+                 onclick="popBalloon(this,1)">
+                <span class="string"></span>
+            </div>
+
+            <div class="balloon b3"
+                 onclick="popBalloon(this,2)">
+                <span class="string"></span>
+            </div>
+
+            <div class="balloon b4"
+                 onclick="popBalloon(this,3)">
+                <span class="string"></span>
+            </div>
+
+            <div class="balloon b5"
+                 onclick="popBalloon(this,4)">
+                <span class="string"></span>
+            </div>
+
+        </div>
+
+        <div id="balloonMessage"
+             class="balloon-message">
+        </div>
+
+        <div id="counter"
+             class="counter">
+            0 / 5 popped
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CAKE
+========================= -->
+
+<section id="cake" class="screen">
+
+    <div class="container">
+
+        <div class="small">
+            make a wish
+        </div>
+
+        <h1 class="cake-title">
+            Happy 23rd, Rita
+        </h1>
+
+        <p class="cake-text">
+            Slide the wind bar and blow out your candles.
+        </p>
+
+        <div class="cake">
+
+            <div class="flame f1"></div>
+            <div class="flame f2"></div>
+            <div class="flame f3"></div>
+
+            <div class="candle c1"></div>
+            <div class="candle c2"></div>
+            <div class="candle c3"></div>
+
+            <div class="cake-body">
+
+                <div class="frosting"></div>
+
+                <div class="number23">
+                    23
+                </div>
+
+            </div>
+
+            <div class="plate"></div>
+
+        </div>
+
+        <div class="wind-label">
+            💨 Slide to blow
+        </div>
+
+        <input
+            id="wind"
+            class="wind"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            oninput="blow(this.value)"
+        >
+
+        <div id="windPercent"
+             class="wind-percent">
+            0% wind
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CANDLE MESSAGE
+========================= -->
+
+<section id="candleMessage" class="screen">
+
+    <div class="candle-message-inner">
+
+        <div class="small">
+            wish made ♡
+        </div>
+
+        <h2>
+            Happy 23rd,<br>
+            my Rita.
+        </h2>
+
+        <p>
+            I hope this year gives you a thousand
+            reasons to smile, a hundred reasons to be
+            proud of yourself, and countless little
+            moments that make you genuinely happy.
+        </p>
+
+        <p style="margin-top:15px;">
+            Now that you've blown out the candles...
+            there's something waiting for you.
+        </p>
+
+        <button onclick="go('gift')">
+            Show me my gift ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     GIFT
+========================= -->
+
+<section id="gift" class="screen">
+
+    <div class="container">
+
+        <div class="small">
+            birthday delivery
+        </div>
+
+        <h1 class="gift-title">
+            A very important gift
+        </h1>
+
+        <p class="gift-sub">
+            Since I couldn't physically teleport this
+            through the screen...
+        </p>
+
+
+        <!-- SUNFLOWER -->
+
+        <div class="sunflower">
+
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+
+            <div class="flower-center"></div>
+
+            <div class="flower-stem"></div>
+
+        </div>
+
+
+        <!-- KITKAT -->
+
+        <div class="kitkat">
+
+            <div class="wrapper">
+
+                <div class="wrapper-border"></div>
+
+                <div class="kitkat-logo">
+                    KITKAT
+                </div>
+
+                <div class="wafer"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MESSAGE -->
+
+        <div class="joke">
+
+            <p>
+                🌻 Sunflower because I know you like them.
+            </p>
+
+            <p>
+                🍫 KitKat because obviously.
+            </p>
+
+            <p>
+                And if you want the
+                <strong>real version</strong>
+                delivered to your doorstep...
+            </p>
+
+            <p>
+                <strong>
+                    you may share your address and phone
+                    number for completely legitimate
+                    birthday-gift purposes.
+                </strong>
+            </p>
+
+            <p>
+                For now, please accept this virtual one.
+                Zero delivery charges.
+            </p>
+
+        </div>
+
+
+        <button onclick="go('letter')">
+            There's one more thing ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LETTER
+========================= -->
+
+<section id="letter" class="screen">
+
+    <div class="letter">
+
+        <h1>
+            Dear Rita,
+        </h1>
+
+        <p>
+            Somehow we went from meeting in the most
+            unexpected place to talking every day,
+            getting to know each other, and eventually
+            becoming us.
+        </p>
+
+        <p>
+            And honestly, I'm really glad that happened.
+        </p>
+
+        <p>
+            I like the way you care. I like how you notice
+            the little things. I like that you can be
+            ridiculously cute one second and then tell me
+            “chup chap kha” the next.
+        </p>
+
+        <p>
+            You're chalant in a world where people
+            sometimes act like caring is embarrassing.
+            Please never lose that part of yourself.
+        </p>
+
+        <p>
+            I hope 23 is kind to you. I hope you get
+            everything you're working for, laugh a lot,
+            eat a lot of good food, and have plenty of
+            reasons to randomly smile at your phone.
+        </p>
+
+        <p>
+            And selfishly...
+            I hope I get to be one of those reasons
+            quite often.
+        </p>
+
+        <p class="signature">
+            Happy 23rd birthday, baby. ♡
+        </p>
+
+        <button onclick="go('final')">
+            One last thing...
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FINAL
+========================= -->
+
+<section id="final" class="screen">
+
+    <div class="container final">
+
+        <div class="small">
+            16 • 09 • 2026
+        </div>
+
+        <div class="final-number">
+            23
+        </div>
+
+        <h1>
+            looks really good on you.
+        </h1>
+
+        <p>
+            Happy Birthday, Rita.
+        </p>
+
+        <p>
+            Stay cute.<br>
+            Stay chaotic.<br>
+            Stay ridiculously chalant.
+        </p>
+
+        <p class="final-last">
+            And yes... your virtual KitKat is still
+            waiting for you. 🍫🌻
+        </p>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function go(id) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(function(screen) {
+            screen.classList.remove("active");
+        });
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+
+    if (id === "final") {
+        makeConfetti();
+    }
+}
+
+
+/* =========================
+   BALLOONS
+========================= */
+
+var popped = 0;
+
+var messages = [
+
+    "You deserve all the happiness in the world. ♡",
+
+    "I hope you never forget how genuinely special you are.",
+
+    "One of my favourite things about you is how much you care.",
+
+    "You're cute, you're chaotic, and somehow you're still my favourit
